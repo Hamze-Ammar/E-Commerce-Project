@@ -1,7 +1,93 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+* {
+  margin: 0;
+  box-sizing: content-box;
+  font-family: sans-serif; 
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(90, 81, 81);
+
+
+}
+
+.header {
+  padding: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.header >h1, h3, h4 {
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.muted {
+  font-weight: 300;
+}
+
+.header > h1 {
+  font-size: 100px;
+  color: rgb(90, 81, 81);
+}
+
+.header > h4 {
+  margin: 15px;
+}
+.header h4 > span {
+  padding-bottom: 15px;
+  border-bottom: 1px solid ;
+}
+
+
+/* ======== Nav Bar ==========  */
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(90, 81, 81);
+}
+
+.topnav a {
+float: left;
+color: #cfd6d6;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.topnav a:hover {
+background-color: rgb(133, 131, 131);
+color: rgb(250, 239, 239);
+}
+
+.form {
+  margin: 25px;
+}
+
+
+/* Add Category */
+.add-category {
+  display: none;
+}
+
+.form  h1, label, input {
+  /* margin-top: 10px; */
+  margin-bottom: 10px;
+}
+
+.form select {
+  
+}
+
+.form input {
+  box-shadow: none;
+  height: 40px;
+  width: 620px;
+  border: none;
+  border-bottom: 1px solid rgb(130, 130, 130);
+}
+
+.form > input:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border: none;
+  /*border-bottom: 1px solid rgb(130, 130, 130); */
 }

@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="index.css">
     <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <div class="hero">
+        <div class="header">
+            <h1>Sooq</h1>
+            <h3><span class="muted">E-commerce</span></h3>
+            <h4 class="muted"><span>Admin Panel</span></h4>
+        </div>
+        <!-- navBar -->
+        <div class="topnav">
+            
+            <a href="#news">Add New Category</a>
+            <a href="#contact">Add New Item</a>
+            <a href="#about">Display Items</a>
+        </div>
+
+        <!-- add new category -->
+        <div class="add-category form">
+            <h1>Add New Category</h1>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" placeholder="Enter Category Name*"> <br>
+            <label for="Description">Description</label> <br> 
+            <input type="text" name="Description" placeholder="Enter Category Description*"><br>
+        </div>
+        <!-- add new item -->
+        <div class="add-item form">
+            <h1>Add New Item</h1>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" placeholder="Enter Item Name*"> <br>
+            <label for="price">Price</label><br>
+            <input type="number" name="price" placeholder="Enter Item Price*"> <br>
+            <label for="Description">Description</label> <br> 
+            <input type="text" name="Description" placeholder="Enter Item Description*"><br>
+            <label for="category">Category</label><br>
+            <select class="costum-select" name="category" id="">
+                <option value="Lorem">Lorem</option>
+                <option value="ipsum">ipsum</option>
+                <option value="dolor">dolor</option>
+            </select>
+        </div>
+    </div>
+
+
+    <!-- <script src="./renderer.js"></script> -->
   </body>
 </html>
