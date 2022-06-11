@@ -45,13 +45,13 @@
 }
 
 .topnav a {
-float: left;
-color: #cfd6d6;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 17px;
-background-color: rgb(90, 81, 81);
+  float: left;
+  color: #cfd6d6;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: rgb(90, 81, 81);
 
 }
 
@@ -61,18 +61,21 @@ color: rgb(250, 239, 239);
 }
 
 .form {
-  margin: 25px;
+  margin: 15px;
 }
 
 
-/* Add Category */
+/* Add Categories and items */
 .add-category {
+  display: none;
+}
+.add-item {
   display: none;
 }
 
 .form  h1, label, input {
   /* margin-top: 10px; */
-  margin-bottom: 10px;
+  margin-bottom: 3px;
 }
 
 
@@ -106,3 +109,97 @@ color: rgb(250, 239, 239);
   height: 100%;
   font-size: 15px;
 }
+
+/* ====== Modal login admin ====== */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  padding: 60px 40px 25px 40px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.modal-content a {
+  color: blue;
+  border: none;
+}
+
+/* The Close Button */
+.close {
+  background-color: white;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Modal content */
+
+.modal  h1 {
+  flex-grow: 1;
+  margin-bottom: 40px;
+  background-color: white;
+}
+.modal label {
+  background-color: white;
+}
+.modal span, input {
+  margin-bottom: 40px;  
+}
+.modal input {
+  background-color: white;
+  padding: 3px;
+  box-shadow: none;
+  height: 50px;
+  max-width: 80%;
+  border: none;
+  border-bottom: 1px solid rgb(130, 130, 130);
+}
+.login {
+  padding-left: 30vw;
+  padding-right: 30vw;
+}
+.login input {
+  width: 320px;
+}
+.login input:focus {
+  outline: 0;
+  opacity: 0.6;
+  border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.modal-submit-btn {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  padding: 15px;
+  background-color: rgb(74, 74, 236);
+  border: none;
+  border-radius: 5px;
+  color: #fefefe;
+  width: 30%;
+}
+.modal-submit-btn:hover{
+  background-color: rgb(40, 40, 207);
+}
+/* ====== End Modal login admin ====== */

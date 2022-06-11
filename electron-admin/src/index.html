@@ -8,18 +8,32 @@
     <title>Hello World!</title>
   </head>
   <body>
+    <!-- The Modal -->
+    <!-- login admin-->
+    <div id="login-modal" class="modal login">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Sign In</h1>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" placeholder="Enter your email*"> <br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Enter your password*"> <br>
+            <button class="modal-submit-btn">Sign In</button>
+        </div>
+    </div>
+    <!-- End modal login admin -->
     <div class="hero">
         <div class="header">
             <h1>Sooq</h1>
             <h3><span class="muted">E-commerce</span></h3>
-            <h4 class="muted"><span>Admin Panel</span></h4>
         </div>
         <!-- navBar -->
         <div class="topnav">
             
-            <a href="#news">Add New Category</a>
-            <a href="#contact">Add New Item</a>
-            <a href="#about">Display Items</a>
+            <a href="#" id="add-category-btn">Add New Category</a>
+            <a href="#" id="add-item-btn">Add New Item</a>
+            <a href="#" id="login">Login</a>
         </div>
 
         <!-- add new category -->
@@ -42,16 +56,16 @@
             <label for="category">Category</label><br>
             <div class="custom-select" style="width:300px;">
               <select class="" name="category" id="" >
-                <option value="Lorem">Lorem</option>
-                <option value="ipsum">ipsum</option>
-                <option value="dolor">dolor</option>
-            </select>
+                  <option value="Lorem">Lorem</option>
+                  <option value="ipsum">ipsum</option>
+                  <option value="dolor">dolor</option>
+              </select>
             </div>
-            
         </div>
     </div>
 
 
     <!-- <script src="./renderer.js"></script> -->
+    <script src="script.js"></script>
   </body>
 </html>
