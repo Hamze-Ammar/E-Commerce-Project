@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(90, 81, 81);
+    background-color: rgb(222, 222, 245);
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+    font-size: 25px;
+
+}
+.nav > div {
+    display: flex;
+}
+.nav-side > span, a {
+    padding: 10px;
+    width: 100%;
+    margin: auto 20px;
+    color: rgb(90, 81, 81);
+    border: 7px solid rgb(222, 222, 245) ;
+}
+.nav-side a{
+    text-decoration: none;
+}
+
+.nav-side a:hover {
+    color: rgb(41, 38, 38);
+    border-bottom: 7px solid rgb(124, 223, 198);
+}
+
+.strong {
+    font-size:40px;
+    font-weight:bold;
+    margin-right: 70px !important;
+}
+
+/* =======Modal Sign in ========= */
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    padding: 60px 40px 25px 40px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.modal-content a {
+    color: blue;
+    border: none;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal content */
+
+.modal  h1 {
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
+.modal span, input {
+    margin-bottom: 40px;
+}
+.modal input {
+    padding: 3px;
+    box-shadow: none;
+    height: 50px;
+    max-width: 80%;
+    border: none;
+    border-bottom: 1px solid rgb(130, 130, 130);
+}
+.modal-content > p{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.login {
+    padding-left: 30vw;
+    padding-right: 30vw;
+}
+.login input {
+    width: 320px;
+}
+.register input {
+    width: 80%;
+}
+.modal-submit-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    background-color: rgb(74, 74, 236);
+    border: none;
+    border-radius: 5px;
+    color: #fefefe;
+    width: 30%;
+}
+.modal-submit-btn:hover{
+    background-color: rgb(40, 40, 207);
+}
+/* The Close Button */
+.register-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.register-close:hover,
+.register-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

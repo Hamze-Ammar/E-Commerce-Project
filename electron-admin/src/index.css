@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
   font-family: sans-serif; 
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(90, 81, 81);
@@ -75,9 +75,6 @@ color: rgb(250, 239, 239);
   margin-bottom: 10px;
 }
 
-.form select {
-  
-}
 
 .form input {
   box-shadow: none;

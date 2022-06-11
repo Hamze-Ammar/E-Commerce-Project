@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css"> 
+     -->
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <title>Sooq - Home Page</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-left nav-side">
+            <span class="strong">Sooq</span></i>
+            <a href="#">Items</a>
+            <a href="#">Categories</a>
+            
+        </div>
+        <div class="nav-right nav-side">
+            <a href="#" id="login">Login</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+    <!-- End Nav section -->
+
+    <!-- The Modal -->
+    <!-- login -->
+    <div id="login-modal" class="modal login">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Sign In</h1>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" placeholder="Enter your email*"> <br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Enter your password*"> <br>
+            <button class="modal-submit-btn">Sign In</button>
+            <p>Don't have an account? <a id="register" href="#">Register Now!</a></p>
+        </div>
+    </div>
+
+    <!-- register -->
+    <div id="register-modal" class="modal register">
+        <!-- Modal content -->
+        <div class="modal-content ">
+            <span class="register-close">&times;</span>
+            <h1>Sign Up</h1>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" placeholder="Enter your name*"> <br>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" placeholder="Enter your email*"> <br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Enter your password*"> <br>
+            <button class="modal-submit-btn">Sign Up</button>
+        </div>
+    </div>
+
+    <script src="./javascript/main.js"></script>
+</body>
+</html>
