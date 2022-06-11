@@ -79,7 +79,6 @@ login_submit_btn.onclick = function(e){
 
 }
 
-
 function handleResponseLogin(json){
     if (json.access_token){
         let access_token = json.access_token;
@@ -91,7 +90,6 @@ function handleResponseLogin(json){
         
         login_modal.style.display = "none";
         alert("You are now logged in 'Admin'!");
-
     }
     else if (json.email){
         alert(json.email);
@@ -105,4 +103,54 @@ function handleResponseLogin(json){
         location.reload(true);
     }
 }
+
+// Add Category
+
+let submit_new_category = document.getElementById("submit-new-category");
+let msg = document.getElementById("msg");
+let response_request = document.getElementById("response");
+
+submit_new_category.onclick = function(e){
+    // Clear some html
+    msg.innerHTML = "";
+    response_request.innerHTML = "";
+
+    e.preventDefault();
+    let category_name = document.getElementById("category_name").value;
+    let category_description = document.getElementById("category_description").value;
+    if (!category_name || !category_description){
+        msg.innerHTML = "Missing info, all fields are required";
+        return
+    }
+    
+
+    let token = 'Bearer ' + localStorage.getItem("access_token");
+
+    let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_category';
+
+    let data = new FormData();
+    data.append('name', category_name);
+
+    let headers = {};
+    headers.Authorization = token;
+    axios({
+    method: "post",
+    url: my_url,
+    data: data,
+    headers: headers,
+
+    }).then(function (response) {
+        handleResponseCategories(response);
+    });
+}
+
+function handleResponseCategories(response){
+    console.log(response.data.status);
+    if (response.data.status=='Success'){
+        response_request.innerHTML = 'A new category has been succefully added!';
+    }
+    document.getElementById("category_name").value = "";
+    document.getElementById("category_description").value = "";
+}
+
 

@@ -71,7 +71,12 @@ color: rgb(250, 239, 239);
 .add-item {
   display: none;
 }
-
+.form #msg {
+  color: red;
+}
+.form #response {
+  color: rgb(12, 94, 9);
+}
 .form  h1, label, input {
   /* margin-top: 10px; */
   margin-bottom: 3px;
