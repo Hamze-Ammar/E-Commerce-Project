@@ -50,22 +50,19 @@
         <div class="add-item form">
             <h1>Add New Item</h1>
             <label for="name">Name</label><br>
-            <input type="text" name="name" placeholder="Enter Item Name*" required> <br>
+            <input id="item_name" type="text" name="name" placeholder="Enter Item Name*" required> <br>
             <label for="price">Price - $</label><br>
-            <input type="number" name="price" placeholder="Enter Item Price*" required> <br>
+            <input id="item_price" type="number" name="price" placeholder="Enter Item Price*" required> <br>
             <label for="Description">Description</label> <br> 
-            <input type="text" name="Description" placeholder="Enter Item Description*" required><br>
+            <input id="item_description" type="text" name="Description" placeholder="Enter Item Description*" required><br>
             <label for="category">Category</label><br>
             <div class="custom-select">
-              <select class="" name="category" id="" required>
-                  <option value="Lorem">Lorem</option>
-                  <option value="ipsum">ipsum</option>
-                  <option value="dolor">dolor</option>
+              <select id="select-categories" class="" name="category" id="" onChange="getSelectedCategoryId(this.options[this.selectedIndex])" required>
               </select>
             </div>
-            <a href="" class="save-form-btn">Save</a>
-            <span id="msg"></span>
-            <span id="response"></span>
+            <a href=""  id="submit-new-item" class="save-form-btn">Save</a>
+            <span id="msg-item"></span>
+            <span id="response-item"></span>
         </div>
     </div>
 

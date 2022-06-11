@@ -52,6 +52,8 @@ add_item_btn.onclick = function(){
     }
     let add_item = document.getElementsByClassName("add-item")[0];
     add_item.style.display = "block";
+    // get and display categories in  select tag
+    fetchCategories();
 }
 
 // Linking ==========================================
@@ -109,6 +111,8 @@ function handleResponseLogin(json){
 let submit_new_category = document.getElementById("submit-new-category");
 let msg = document.getElementById("msg");
 let response_request = document.getElementById("response");
+let token = 'Bearer ' + localStorage.getItem("access_token");
+
 
 submit_new_category.onclick = function(e){
     // Clear some html
@@ -123,8 +127,6 @@ submit_new_category.onclick = function(e){
         return
     }
     
-
-    let token = 'Bearer ' + localStorage.getItem("access_token");
 
     let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_category';
 
@@ -145,12 +147,105 @@ submit_new_category.onclick = function(e){
 }
 
 function handleResponseCategories(response){
-    console.log(response.data.status);
     if (response.data.status=='Success'){
         response_request.innerHTML = 'A new category has been succefully added!';
+    }
+    else{
+        console.log(response.data.status);
+        return
     }
     document.getElementById("category_name").value = "";
     document.getElementById("category_description").value = "";
 }
 
 
+// ===== Get and display Categories
+
+function fetchCategories(){
+    // Call the get categories api
+    let my_url= "http://127.0.0.1:8000/api/v1/admin/get_categories";
+    let headers = {};
+    headers.Authorization = token;
+    axios({
+        method: "get",
+        url: my_url,
+        headers: headers,
+    
+        }).then(function (response) {
+            displayCategories(response);
+        });
+}
+
+function displayCategories(response) {
+    if (response.data.status!=="Success"){
+        //error
+        console.log(response);
+        return
+    }
+    const categories = response.data.response;
+    let select_element = document.getElementById("select-categories");
+    categories.forEach((category)=>{
+        select_element.innerHTML += `<option id="${category.id}" value="${category.name}">${category.name}</option>`;
+    });
+}
+
+
+// directly pass selected value to function in onchange!
+let selected_item_category = "";
+function getSelectedCategoryId(option) {
+    selected_item_category = option.id;
+}
+
+// submit new item
+let submit_new_item = document.getElementById("submit-new-item");
+
+submit_new_item.onclick = function(e){
+    // Clear some html
+    let msg = document.getElementById("msg-item");
+    let response = document.getElementById("response-item");
+    msg.innerHTML = "";
+    response.innerHTML = "";
+
+    e.preventDefault();
+    let item_name = document.getElementById("item_name").value;
+    let item_price = document.getElementById("item_price").value;
+    let item_description = document.getElementById("item_description").value;
+    let item_category_id = selected_item_category;
+    if (!item_name || !item_price || !item_description || !item_category_id){
+        msg.innerHTML = "Missing info, all fields are required";
+        return
+    }
+
+    let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_item';
+
+    let data = new FormData();
+    data.append('name', item_name);
+    data.append('price', item_price);
+    data.append('category_id', item_category_id);
+
+    let headers = {};
+    headers.Authorization = token;
+    axios({
+    method: "post",
+    url: my_url,
+    data: data,
+    headers: headers,
+
+    }).then(function (response) {
+        handleResponseItems(response);
+    });
+}
+
+function handleResponseItems(response){
+    if (response.data.status!=="Success"){
+        //error
+        console.log(response);
+        return
+    }else{
+        document.getElementById("response-item").innerHTML = 'A new item has been succefully added!';
+    }
+    document.getElementById("item_name").value = "";
+    document.getElementById("item_price").value = "";
+    document.getElementById("item_description").value = "";
+    document.getElementById("select-categories").value = "";
+}
