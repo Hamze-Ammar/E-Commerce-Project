@@ -4,6 +4,8 @@
 const login_modal = document.getElementById("login-modal");
 // Get the button that opens the modal
 const login_btn = document.getElementById("login");
+// Get submit login btn
+const login_submit_btn = document.getElementById("login-submit-btn");
 // Get the <span> element that closes the modal
 const login_span = document.getElementsByClassName("close")[0];
 // Get the add category btn
@@ -28,7 +30,7 @@ login_span.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
+  if (event.target == login_modal) {
     login_modal.style.display = "none";
   }
 }
@@ -51,3 +53,56 @@ add_item_btn.onclick = function(){
     let add_item = document.getElementsByClassName("add-item")[0];
     add_item.style.display = "block";
 }
+
+// Linking ==========================================
+
+//Login
+login_submit_btn.onclick = function(e){
+    e.preventDefault();
+    let email = document.getElementById("email-input").value;
+    let password = document.getElementById("password-input").value;
+
+    //data to be sent to the POST request
+    let _data = {
+        email: email,
+        password: password,
+    }
+
+    fetch('http://127.0.0.1:8000/api/v1/admin/login_admin', {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(response => response.json()) 
+        .then(json =>  handleResponseLogin(json))
+        .catch(err => console.log(err));
+
+}
+
+
+function handleResponseLogin(json){
+    if (json.access_token){
+        let access_token = json.access_token;
+        let token_type = json.token_type;
+        
+        //Save to local storage 
+        localStorage.setItem("access_token", access_token );
+        localStorage.setItem("token_type", token_type );
+        
+        login_modal.style.display = "none";
+        alert("You are now logged in 'Admin'!");
+
+    }
+    else if (json.email){
+        alert(json.email);
+        location.reload(true);
+    }
+    else if (json.password){
+        alert(json.password);
+        location.reload(true);
+    }else if (json.error){
+        alert(json.error);
+        location.reload(true);
+    }
+}
+

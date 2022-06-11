@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' ; script-src 'self'"> -->
     <link rel="stylesheet" href="index.css">
     <title>Hello World!</title>
   </head>
@@ -16,10 +16,10 @@
             <span class="close">&times;</span>
             <h1>Sign In</h1>
             <label for="email">Email</label><br>
-            <input type="text" name="email" placeholder="Enter your email*"> <br>
+            <input type="text" name="email" placeholder="Enter your email*" id="email-input"> <br>
             <label for="password">Password</label><br>
-            <input type="password" name="password" placeholder="Enter your password*"> <br>
-            <button class="modal-submit-btn">Sign In</button>
+            <input type="password" name="password" placeholder="Enter your password*" id="password-input"> <br>
+            <button class="modal-submit-btn" id="login-submit-btn">Sign In</button>
         </div>
     </div>
     <!-- End modal login admin -->
@@ -54,7 +54,7 @@
             <label for="Description">Description</label> <br> 
             <input type="text" name="Description" placeholder="Enter Item Description*"><br>
             <label for="category">Category</label><br>
-            <div class="custom-select" style="width:300px;">
+            <div class="custom-select">
               <select class="" name="category" id="" >
                   <option value="Lorem">Lorem</option>
                   <option value="ipsum">ipsum</option>
@@ -65,7 +65,7 @@
     </div>
 
 
-    <!-- <script src="./renderer.js"></script> -->
+    <!-- script -->
     <script src="script.js"></script>
   </body>
 </html>
