@@ -5,7 +5,6 @@
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(90, 81, 81);
   background-color: rgb(222, 222, 245);
-
 }
 
 .header {
@@ -67,7 +66,7 @@ color: rgb(250, 239, 239);
 
 /* Add Categories and items */
 .add-category {
-  display: none;
+  /* display: none; */
 }
 .add-item {
   display: none;
@@ -76,6 +75,21 @@ color: rgb(250, 239, 239);
 .form  h1, label, input {
   /* margin-top: 10px; */
   margin-bottom: 3px;
+}
+.form .save-form-btn {
+  display: block;
+  width: 120px;
+  text-decoration: none;
+  font-size: 18px;
+  background-color: rgb(72, 84, 177);
+  margin-top: 20px;
+  color:#fefefe;
+  padding: 10px 40px;
+  border-radius: 3%;
+}
+.form .save-form-btn:hover {
+  background-color: rgb(97, 105, 170);
+  color:white;
 }
 
 .form input {
