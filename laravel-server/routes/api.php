@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -25,11 +25,17 @@ Route::group(['prefix' => 'v1'], function(){
     });
 
 
-    Route::group(['prefix' => 'user'], function(){
-        Route::post('/add_category', [AdminController::class, 'addCategory'])->name("add_category");
-        Route::post('/add_item', [AdminController::class, 'addItem'])->name("add_item");
+    Route::group(['prefix' => 'admin'], function(){
+        Route::group(['middleware' => 'api'], function($router) {
+            Route::post('/login_admin', [JWTController::class, 'loginAdmin']);
+        });
+        Route::group(['middleware' => 'admin'], function(){
+            Route::post('/add_category', [AdminController::class, 'addCategory'])->name("add_category");
+            Route::post('/add_item', [AdminController::class, 'addItem'])->name("add_item");
+        });
     });
 
     Route::get('/main', [MainController::class, 'displayItems'])->name("displayItems");
     Route::get('/not_found', [MainController::class, 'notFound'])->name("not-found");
 });
+

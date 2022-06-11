@@ -17,7 +17,7 @@ class JWTController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'loginAdmin']]);
     }
 
     /**
@@ -123,11 +123,35 @@ class JWTController extends Controller
         ]);  
     }
 
-    // testing
-    // public function respondWithType()
-    // {
-    //     return response()->json([
-    //         'type' => $user->type,
-    //     ]);
-    // }
+    
+
+    /**
+     * login Admin
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function loginAdmin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        if (!$token = auth()->attempt($validator->validated())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        
+        //add the part of type here
+        $user = Auth::user();
+        $type = $user->type;
+        if ($type=='1'){
+            return $this->respondWithToken($token);
+        }
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
 }
