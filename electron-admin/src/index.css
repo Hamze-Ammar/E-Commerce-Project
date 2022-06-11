@@ -78,7 +78,6 @@ color: rgb(250, 239, 239);
   margin-bottom: 3px;
 }
 
-
 .form input {
   box-shadow: none;
   height: 40px;
@@ -124,8 +123,8 @@ color: rgb(250, 239, 239);
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 35vw;
+  padding-right: 35vw;
 }
 
 /* Modal Content */
@@ -133,7 +132,7 @@ color: rgb(250, 239, 239);
   background-color: #fefefe;
   padding: 60px 40px 25px 40px;
   border: 1px solid #888;
-  width: 80%;
+  width: 100%;
 }
 .modal-content a {
   color: blue;
@@ -172,17 +171,11 @@ color: rgb(250, 239, 239);
   padding: 3px;
   box-shadow: none;
   height: 50px;
-  max-width: 80%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid rgb(130, 130, 130);
 }
-.login {
-  padding-left: 30vw;
-  padding-right: 30vw;
-}
-.login input {
-  width: 320px;
-}
+
 .login input:focus {
   outline: 0;
   opacity: 0.6;
@@ -197,7 +190,7 @@ color: rgb(250, 239, 239);
   border: none;
   border-radius: 5px;
   color: #fefefe;
-  width: 30%;
+  width: 150px;
 }
 .modal-submit-btn:hover{
   background-color: rgb(40, 40, 207);
