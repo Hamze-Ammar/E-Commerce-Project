@@ -81,14 +81,14 @@ color: rgb(250, 239, 239);
   height: 40px;
   width: 620px;
   border: none;
-  border-bottom: 1px solid rgb(130, 130, 130);
+  border-bottom: 2px solid rgb(180, 180, 180);
+  transition: all 0.2s ease-in-out;
 }
 
-.form > input:focus {
-  /* box-shadow: none;
-  -webkit-box-shadow: none;
-  border: none; */
-  /*border-bottom: 1px solid rgb(130, 130, 130); */
+.form input:focus {
+  outline: 0;
+  opacity: 0.6;
+  border-bottom: 2px solid rgb(0, 0, 0);
 }
 
 
