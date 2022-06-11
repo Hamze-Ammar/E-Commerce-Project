@@ -32,6 +32,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['middleware' => 'admin'], function(){
             Route::post('/add_category', [AdminController::class, 'addCategory'])->name("add_category");
             Route::post('/add_item', [AdminController::class, 'addItem'])->name("add_item");
+            Route::get('/get_categories', [AdminController::class, 'getCategories'])->name("get_categories");
         });
     });
 
