@@ -88,8 +88,7 @@ function handleResponseLogin(json){
         
         //Save to local storage 
         localStorage.setItem("access_token", access_token );
-        localStorage.setItem("token_type", token_type );
-        
+        token = 'Bearer ' + localStorage.getItem("access_token");
         login_modal.style.display = "none";
         alert("You are now logged in 'Admin'!");
     }
@@ -248,4 +247,37 @@ function handleResponseItems(response){
     document.getElementById("item_price").value = "";
     document.getElementById("item_description").value = "";
     document.getElementById("select-categories").value = "";
+}
+
+
+// Log out ==========
+let logout = document.getElementById("logout");
+logout.onclick = function (){
+    let my_token = localStorage.getItem("access_token");
+    if (my_token==null){
+        alert("You are already logged out");
+        return
+    }
+    let my_url = 'http://127.0.0.1:8000/api/v1/user/logout';
+    let headers = {};
+    headers.Authorization = token;
+    axios({
+    method: "post",
+    url: my_url,
+    headers: headers,
+
+    }).then(function (response) {
+        handleResponseLogout(response);
+    });
+}
+
+function handleResponseLogout(response){
+    if (response.statusText=='OK'){
+        localStorage.removeItem("access_token");
+        alert(response.data.message);
+    }
+    else{
+        console.log("Something went wrong");
+        console.log(response);
+    }
 }

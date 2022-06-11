@@ -71,7 +71,6 @@ class JWTController extends Controller
         }
         
         
-         
         return $this->respondWithToken($token);
     }
 
