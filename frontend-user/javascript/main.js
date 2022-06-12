@@ -377,3 +377,36 @@ function handleGetItemsByIdResponse(response){
     })
   }
 }
+
+//Log out
+// Log out ==========
+let logout = document.getElementById("logout");
+logout.onclick = function (){
+    let my_token = localStorage.getItem("access_token");
+    if (my_token==null){
+        alert("You are already logged out");
+        return
+    }
+    let my_url = 'http://127.0.0.1:8000/api/v1/user/logout';
+    let headers = {};
+    headers.Authorization = "Bearer " + my_token;
+    axios({
+    method: "post",
+    url: my_url,
+    headers: headers,
+
+    }).then(function (response) {
+        handleResponseLogout(response);
+    });
+}
+
+function handleResponseLogout(response){
+    if (response.statusText=='OK'){
+        localStorage.removeItem("access_token");
+        alert(response.data.message);
+    }
+    else{
+        console.log("Something went wrong");
+        console.log(response);
+    }
+}
