@@ -38,6 +38,7 @@ Route::group(['prefix' => 'v1'], function(){
 
     Route::get('/main', [MainController::class, 'displayItems'])->name("displayItems");
     Route::get('/get_all_categories', [MainController::class, 'getAllCategories'])->name("get_all_categories");
+    Route::get('/get_items_by_cat_id', [MainController::class, 'getItemsByCatId'])->name("get_items_by_cat_id");
     Route::get('/not_found', [MainController::class, 'notFound'])->name("not-found");
 });
 

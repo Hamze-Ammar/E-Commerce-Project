@@ -35,4 +35,16 @@ class MainController extends Controller
             "response" => $categories
         ], 200);
     }
+    
+    public function getItemsByCatId(Request $request)
+    {
+        # code...
+        $id = $request->category_id;
+        $items = Item::where("category_id", $id)->get();
+
+        return response()->json([
+            "status" => "Success",
+            "items"=> $items
+        ], 200);
+    }
 }
