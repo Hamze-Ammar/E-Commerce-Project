@@ -58,6 +58,7 @@ body {
     
 }
 .card {
+    background-color: #f3f6f4;
     margin: 25px 15px;
     width: 250px;
     height: 300px;
@@ -233,4 +234,12 @@ body {
 
 #msg-modal .modal-submit-btn{
     margin-top: 35px;
+}
+
+/* categories modal */
+
+.categories-modal p:hover {
+    color: #051a35;
+    font-weight:550;
+    cursor: pointer;
 }

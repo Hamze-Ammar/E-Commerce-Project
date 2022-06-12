@@ -42,6 +42,8 @@ var register_btn = document.getElementById("register");
 // Get the <span> element that closes the modal
 var register_span = document.getElementsByClassName("register-close")[0];
 
+
+
 // When the user clicks the button, open the modal 
 register_btn.onclick = function() {
     login_modal.style.display = "none";
@@ -53,12 +55,18 @@ register_span.onclick = function() {
     register_modal.style.display = "none";
 }
 
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == register_modal) {
     register_modal.style.display = "none";
   }
+  if (event.target == categories_modal) {
+    categories_modal.style.display = "none";
+  }
 }
+
+
 
 // Sign Up =========================
 // validate email address function
@@ -218,7 +226,6 @@ function displayItemsOnload(){
 
 
 function handleGetItemsResponse(response){
-  console.log(response.data.items);
   if (response.data.items){
     let container = document.getElementById("container");
     response.data.items.forEach((item)=>{
@@ -255,19 +262,42 @@ let addToFavourite = (e) => {
 }
 
 // Display categories
-const categories = fetchCategories();
+document.getElementById("categories-btn-header").onclick = function(){
 
-function fetchCategories(){
   // Call the get categories api
-  let my_url= "http://127.0.0.1:8000/api/v1/admin/get_categories";
-  let headers = {};
-  headers.Authorization = token;
+  let my_url= "http://127.0.0.1:8000/api/v1/get_all_categories";
   axios({
       method: "get",
       url: my_url,
-      headers: headers,
   
       }).then(function (response) {
           displayCategories(response);
       });
+}
+
+
+function displayCategories(response) {
+  if (response.data.status!=="Success"){
+      //error
+      console.log(response);
+      return
+  }
+  const categories = response.data.response;
+  let modal = document.getElementById("categories-modal");
+  categories.forEach((category)=>{
+      modal.innerHTML += `<p onClick="displayItemsByCategory(this)" id="${category.id}">${category.name}</p>`;
+  });
+  // Display modal
+  document.getElementById("display-categories-modal").style.display = "block";
+  document.getElementById("closeCategories").addEventListener("click",function(){
+    document.getElementById("display-categories-modal").style.display = "none";
+  })
+
+}
+
+let displayItemsByCategory = (e) => {
+  //close modal
+  document.getElementById("display-categories-modal").style.display = "none";
+  let id = e.id;
+  
 }
