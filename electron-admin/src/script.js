@@ -229,7 +229,7 @@ submit_new_item.onclick = function(e){
     reader.onload = function () {
         base64String = reader.result.replace("data:", "")
           .replace(/^.+,/, "");
-        console.log(base64String);
+        //console.log(base64String);
 
         let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_item';
 
