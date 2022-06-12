@@ -221,6 +221,7 @@ submit_new_item.onclick = function(e){
     data.append('name', item_name);
     data.append('price', item_price);
     data.append('category_id', item_category_id);
+    data.append('description', item_description);
 
     let headers = {};
     headers.Authorization = token;

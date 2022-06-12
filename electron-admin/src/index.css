@@ -110,6 +110,7 @@ color: rgb(250, 239, 239);
   border: none;
   border-bottom: 2px solid rgb(180, 180, 180);
   transition: all 0.2s ease-in-out;
+  color: #000;
 }
 
 .form input:focus {
@@ -153,6 +154,7 @@ color: rgb(250, 239, 239);
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   padding-left: 35vw;
   padding-right: 35vw;
+  color: #000;
 }
 
 /* Modal Content */
@@ -202,6 +204,10 @@ color: rgb(250, 239, 239);
   width: 100%;
   border: none;
   border-bottom: 1px solid rgb(130, 130, 130);
+  color: #000;
+}
+.modal input:focus{
+  color: #000;
 }
 
 .login input:focus {

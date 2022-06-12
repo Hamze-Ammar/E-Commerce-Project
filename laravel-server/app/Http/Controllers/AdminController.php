@@ -29,6 +29,7 @@ class AdminController extends Controller
         $item->price = $request->price;
         $item->image = $request->image;
         $item->category_id = $request->category_id;
+        $item->description = $request->description;
         $item->save();
 
         return response()->json([

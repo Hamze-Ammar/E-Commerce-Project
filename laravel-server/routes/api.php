@@ -24,7 +24,6 @@ Route::group(['prefix' => 'v1'], function(){
         }); 
     });
 
-
     Route::group(['prefix' => 'admin'], function(){
         Route::group(['middleware' => 'api'], function($router) {
             Route::post('/login_admin', [JWTController::class, 'loginAdmin']);
