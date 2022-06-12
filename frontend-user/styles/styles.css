@@ -180,7 +180,7 @@ body {
     padding: 3px;
     box-shadow: none;
     height: 50px;
-    width: 100%;
+    width: 90%;
     border: none;
     border-bottom: 1px solid rgb(130, 130, 130);
 }
@@ -195,12 +195,40 @@ body {
 .login {
     padding-left: 30vw;
     padding-right: 30vw;
+
 }
+@media only screen and (max-width: 1200px){
+    .login {
+        padding-left: 25vw;
+        padding-right: 25vw;
+    }
+}
+@media only screen and (max-width: 960px){
+    .login {
+        padding-left: 18vw;
+        padding-right: 18vw;
+    }
+    .register {
+        padding-left: 18vw;
+        padding-right: 18vw;
+    }
+}
+@media only screen and (max-width: 700px){
+    .login {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+    .register {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+}
+
 .login input {
-    width: 320px;
+    width: 90%;
 }
 .register input {
-    width: 80%;
+    width: 90%;
 }
 .modal #msg-signup, #msg-signin{
     color: red;

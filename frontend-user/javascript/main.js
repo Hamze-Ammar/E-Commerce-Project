@@ -258,8 +258,6 @@ function handleGetItemsResponse(response){
 }
 
 
-
-let liked;
 let addToFavourite = (e) => {
   if (e.style.color == "orange"){
     return;
@@ -291,9 +289,7 @@ let addToFavourite = (e) => {
         alert("Please login first");
         return
       }
-      console.log(response.data.status);
       if (response.data.status=="Success"){
-        console.log("helooooooooo");
         e.style.color = "orange";
       }
   })
