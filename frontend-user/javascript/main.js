@@ -4,11 +4,17 @@ var login_modal = document.getElementById("login-modal");
 // Get the button that opens the modal
 var login_btn = document.getElementById("login");
 
+//Get login submit btn
+var login_btn_submit = document.getElementById("signin-submit");
+
 // Get the <span> element that closes the modal
 var login_span = document.getElementsByClassName("close")[0];
 
 //Get msg modal
 var msg_modal = document.getElementById("msg-modal");
+
+// sign in btn from msd modal
+var login_btn_msg_modal = document.getElementById("login-modal-success");
 
 // When the user clicks the button, open the modal 
 login_btn.onclick = function() {
@@ -124,9 +130,61 @@ register_submit_btn.onclick = function(){
 }
 
 function handleRegisterResponse(response){
-  console.log(response.data.message);
   if (response.data.message=='User successfully registered'){
     register_modal.style.display = "none";
     msg_modal.style.display = "block";
+  }
+}
+
+// Prompt sign in modal after regiser
+login_btn_msg_modal.onclick = function(){
+  msg_modal.style.display = "none";
+  login_modal.style.display = "block";
+}
+
+
+// Sign user ================
+login_btn_submit.onclick = function(){
+  let email = document.getElementById("email-login").value;
+  let password = document.getElementById("password-login").value;
+  //Axios
+  let my_url = 'http://127.0.0.1:8000/api/v1/user/login';
+  let data = new FormData();
+  data.append('email', email);
+  data.append('password', password);
+  axios({
+  method: "post",
+  url: my_url,
+  data: data,
+
+  }).then(function (response) {
+      handleLoginResponse(response);
+  }).catch(function (error) {
+    if (error.response) {
+      // Request made and server responded
+      if(error.response.data.email){
+        alert(error.response.data.email[0]);
+      }
+      console.log(error.response.status);
+      if(error.response.status=='401'){
+        alert("Invalid email or password");
+      }
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+  }})
+}
+
+function handleLoginResponse(response){
+  //console.log(response.data.access_token);
+  if (response.data.access_token){
+    localStorage.setItem("access_token", response.data.access_token);
+    //console.log(localStorage.getItem("access_token"));
+    alert("You are now signed in!")
+    login_modal.style.display = "none";
   }
 }
