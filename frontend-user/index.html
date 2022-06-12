@@ -21,7 +21,7 @@
 <body>
     <div class="nav">
         <div class="nav-left nav-side">
-            <span class="strong">Sooq</span></i>
+            <span class="strong">Sooq.com</span></i>
             <a href="#">Items</a>
             <a href="#">Categories</a>
             
@@ -45,6 +45,7 @@
             <label for="password">Password</label><br>
             <input type="password" name="password" placeholder="Enter your password*"> <br>
             <button class="modal-submit-btn">Sign In</button>
+            <p id="msg-signin"></p>
             <p>Don't have an account? <a id="register" href="#">Register Now!</a></p>
         </div>
     </div>
@@ -56,15 +57,33 @@
             <span class="register-close">&times;</span>
             <h1>Sign Up</h1>
             <label for="name">Name</label><br>
-            <input type="text" name="name" placeholder="Enter your name*"> <br>
+            <input id="name-signup" type="text" name="name" placeholder="Enter your name*"> <br>
             <label for="email">Email</label><br>
-            <input type="text" name="email" placeholder="Enter your email*"> <br>
+            <input id="email-signup" type="text" name="email" placeholder="Enter your email*"> <br>
             <label for="password">Password</label><br>
-            <input type="password" name="password" placeholder="Enter your password*"> <br>
-            <button class="modal-submit-btn">Sign Up</button>
+            <input id="password-signup" type="password" name="password" placeholder="Enter your password*"> <br>
+            <label for="password_confirmation">Confirm Password</label><br>
+            <input id="password_confirmation-signup" type="password" name="password_confirmation" placeholder="Confirm your password*"><br>
+            <button class="modal-submit-btn" id="sign-up-submit">Sign Up</button>
+            <p id="msg-signup"></p>
         </div>
     </div>
+    <!-- prompt message modal -->
+    <div id="msg-modal" class="modal msg-modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Welcome to Souq.com</h1>
+            <p>You have been successfully registered!</p>
+            <p>Please sign in first.</p>
+            <button  class="modal-submit-btn">Sign In</button>
+        </div>
+    </div>
+    <!-- End modals -->
 
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./javascript/main.js"></script>
 </body>
 </html>
