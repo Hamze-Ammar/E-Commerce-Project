@@ -21,6 +21,13 @@ body {
 
 }
 
+@media only screen and (max-width: 1000px){
+    /*Tablets [601px -> 1200px]*/
+    .nav {
+        padding: 0;
+    }
+}
+
 .nav > div {
     display: flex;
 
@@ -32,8 +39,6 @@ body {
     border: 7px solid #fff ;
     font-weight:500;
     color: #484848;
-
-
 }
 .nav-side a{
     text-decoration: none;
@@ -117,11 +122,6 @@ body {
 }
 
 
-
-
-
-
-
 /* =======Modal Sign in ========= */
 /* The Modal (background) */
 .modal {
@@ -145,7 +145,7 @@ body {
     background-color: #fefefe;
     padding: 60px 40px 25px 40px;
     border: 1px solid #888;
-    width: 80%;
+    width: 100%;
 }
 .modal-content a {
     color: blue;
@@ -180,7 +180,7 @@ body {
     padding: 3px;
     box-shadow: none;
     height: 50px;
-    max-width: 80%;
+    width: 100%;
     border: none;
     border-bottom: 1px solid rgb(130, 130, 130);
 }

@@ -42,6 +42,15 @@ var register_btn = document.getElementById("register");
 // Get the <span> element that closes the modal
 var register_span = document.getElementsByClassName("register-close")[0];
 
+var display_all_items = document.getElementById("display-all-items-btn");
+display_all_items.onclick = function(){
+  displayItemsOnload();
+}
+
+window.onload = function() {
+  displayItemsOnload();
+}
+
 
 
 // When the user clicks the button, open the modal 
@@ -248,9 +257,13 @@ function handleGetItemsResponse(response){
   }
 }
 
-displayItemsOnload();
 
+
+let liked;
 let addToFavourite = (e) => {
+  if (e.style.color == "orange"){
+    return;
+  }
   //check if user signed in
   let token = localStorage.getItem("access_token");
   if (!token){
@@ -258,7 +271,32 @@ let addToFavourite = (e) => {
     return;
   }
   let item_id = e.id;
-  console.log(item_id);
+
+  let myheaders = "Bearer " + token;
+  //Axios
+  let my_url = 'http://127.0.0.1:8000/api/v1/user/add_favourite';
+  let data = new FormData();
+  data.append('item_id', item_id);
+  let headers = {};
+  headers.Authorization = myheaders;
+  axios({
+  method: "post",
+  url: my_url,
+  data: data,
+  headers: headers,
+
+  }).then(function (response) {
+      if (response.data.status=="Please login first"){
+        console.log(response.data);
+        alert("Please login first");
+        return
+      }
+      console.log(response.data.status);
+      if (response.data.status=="Success"){
+        console.log("helooooooooo");
+        e.style.color = "orange";
+      }
+  })
 }
 
 // Display categories
@@ -317,10 +355,7 @@ let displayItemsByCategory = (e) => {
     } else if (error.request) {
       // The request was made but no response was received
       console.log(error.request);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      //console.log('Error', error.message);
-  }})
+    }})
 }
 
 function handleGetItemsByIdResponse(response){
