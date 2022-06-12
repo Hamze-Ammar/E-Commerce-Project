@@ -5,15 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- font-awesome -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css"> 
-     -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles/styles.css">
 
     <title>Sooq - Home Page</title>
@@ -22,8 +14,8 @@
     <div class="nav">
         <div class="nav-left nav-side">
             <span class="strong">Sooq.com</span></i>
-            <a href="#">Items</a>
-            <a href="#">Categories</a>
+            <a href="#">ITEMS</a>
+            <a href="#">Categories</a>  
             
         </div>
         <div class="nav-right nav-side">
@@ -32,7 +24,54 @@
         </div>
     </div>
     <!-- End Nav section -->
+    <div id="container" class="container">
+        <div class="card">
+            <div class="card-img">
+                <img src="https://m.media-amazon.com/images/I/71E4InwfcPL._AC_SX425_.jpg" alt="">
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-txt">
+                    <p class="card-item-title">title</p>
+                    <p class="card-price">$168</p>
+                    <p class="card-description">description</p>
+                </div>
+                <div class="card-footer-heart">
+                    <i class="fa fa-thin fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://m.media-amazon.com/images/I/71E4InwfcPL._AC_SX425_.jpg" alt="">
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-txt">
+                    <p class="card-item-title">title</p>
+                    <p class="card-price">$168</p>
+                    <p class="card-description">description descriptsion scrip scrip </p>
+                </div>
+                <div class="card-footer-heart">
+                    <i class="fa fa-thin fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://m.media-amazon.com/images/I/71E4InwfcPL._AC_SX425_.jpg" alt="">
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-txt">
+                    <p class="card-item-title">title</p>
+                    <p class="card-price">$168</p>
+                    <div class="card-description">rip descrip tsionrip descriptsion scrip scrip scrip descriptsion descriptsion</div>
+                </div>
+                <div class="card-footer-heart">
+                    <i class="fa fa-thin fa-heart"></i>
+                </div>
+            </div>
+        </div>
 
+    </div>
     <!-- The Modal -->
     <!-- login -->
     <div id="login-modal" class="modal login">
@@ -77,6 +116,16 @@
             <p>You have been successfully registered!</p>
             <p>Please sign in first.</p>
             <button id="login-modal-success"  class="modal-submit-btn">Sign In</button>
+        </div>
+    </div>
+    <!-- display categories modal -->
+    <div id="categories-modal" class="modal categories-modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Choose Category</h1>
+            <p>My category</p>
+            <p>My category II</p>
         </div>
     </div>
     <!-- End modals -->

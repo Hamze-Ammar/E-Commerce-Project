@@ -188,3 +188,86 @@ function handleLoginResponse(response){
     login_modal.style.display = "none";
   }
 }
+
+
+/// Dislay Items onload
+function displayItemsOnload(){
+    let my_url = 'http://127.0.0.1:8000/api/v1/main';
+    axios({
+    method: "get",
+    url: my_url,
+  
+    }).then(function (response) {
+      handleGetItemsResponse(response);
+    }).catch(function (error) {
+      if (error.response) {
+        // Request made and server responded
+        console.log(error.response.status);
+        if(error.response.status=='401'){
+          alert("Invalid email or password");
+        }
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        //console.log('Error', error.message);
+    }})
+}
+
+
+function handleGetItemsResponse(response){
+  console.log(response.data.items);
+  if (response.data.items){
+    let container = document.getElementById("container");
+    response.data.items.forEach((item)=>{
+      container.innerHTML += `<div class="card" id="${item.id}">
+                                  <div class="card-img">
+                                      <img src="" alt="">
+                                  </div>
+                                  <div class="card-footer">
+                                      <div class="card-footer-txt">
+                                          <p class="card-item-title">${item.name}</p>
+                                          <p class="card-price">$${item.price}</p>
+                                          <p class="card-description">description</p>
+                                      </div>
+                                      <div class="card-footer-heart">
+                                          <i id="${item.id}" onClick="addToFavourite(this)" class="fa fa-thin fa-heart"></i>
+                                      </div>
+                                  </div>
+                              </div>`
+    })
+  }
+}
+
+displayItemsOnload();
+
+let addToFavourite = (e) => {
+  //check if user signed in
+  let token = localStorage.getItem("access_token");
+  if (!token){
+    alert("You are not signed in!");
+    return;
+  }
+  let item_id = e.id;
+  console.log(item_id);
+}
+
+// Display categories
+const categories = fetchCategories();
+
+function fetchCategories(){
+  // Call the get categories api
+  let my_url= "http://127.0.0.1:8000/api/v1/admin/get_categories";
+  let headers = {};
+  headers.Authorization = token;
+  axios({
+      method: "get",
+      url: my_url,
+      headers: headers,
+  
+      }).then(function (response) {
+          displayCategories(response);
+      });
+}
