@@ -55,7 +55,7 @@ register_span.onclick = function() {
     register_modal.style.display = "none";
 }
 
-
+var categories_modal = document.getElementById("display-categories-modal");
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == register_modal) {
@@ -237,7 +237,7 @@ function handleGetItemsResponse(response){
                                       <div class="card-footer-txt">
                                           <p class="card-item-title">${item.name}</p>
                                           <p class="card-price">$${item.price}</p>
-                                          <p class="card-description">description</p>
+                                          <p class="card-description">${item.description}</p>
                                       </div>
                                       <div class="card-footer-heart">
                                           <i id="${item.id}" onClick="addToFavourite(this)" class="fa fa-thin fa-heart"></i>
@@ -299,5 +299,50 @@ let displayItemsByCategory = (e) => {
   //close modal
   document.getElementById("display-categories-modal").style.display = "none";
   let id = e.id;
-  
+  let my_url = `http://127.0.0.1:8000/api/v1/get_items_by_cat_id?category_id=${id}`;
+  let data = new FormData();
+  data.append("category_id", id);
+  axios({
+  method: "get",
+  url: my_url,
+  data: data,
+
+  }).then(function (response) {
+    handleGetItemsByIdResponse(response);
+  }).catch(function (error) {
+    if (error.response) {
+      // Request made and server responded
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      //console.log('Error', error.message);
+  }})
+}
+
+function handleGetItemsByIdResponse(response){
+  if (response.data.items){
+    let container = document.getElementById("container");
+    container.innerHTML = "";
+    response.data.items.forEach((item)=>{
+      container.innerHTML += `<div class="card" id="${item.id}">
+                                  <div class="card-img">
+                                      <img src="" alt="">
+                                  </div>
+                                  <div class="card-footer">
+                                      <div class="card-footer-txt">
+                                          <p class="card-item-title">${item.name}</p>
+                                          <p class="card-price">$${item.price}</p>
+                                          <p class="card-description">${item.description}</p>
+                                      </div>
+                                      <div class="card-footer-heart">
+                                          <i id="${item.id}" onClick="addToFavourite(this)" class="fa fa-thin fa-heart"></i>
+                                      </div>
+                                  </div>
+                              </div>`
+    })
+  }
 }

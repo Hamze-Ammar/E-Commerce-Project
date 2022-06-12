@@ -67,6 +67,7 @@ body {
     padding: 5px;
     box-shadow: 5px 5px 5px 5px #aaaaaa;
     overflow: hidden;
+    border-radius: 3%;
 }
 .card:hover {
     padding: 2px;
