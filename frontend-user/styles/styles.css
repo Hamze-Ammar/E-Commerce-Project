@@ -94,12 +94,17 @@ body {
     margin-bottom: 40px;
 }
 .modal input {
+    font-size: 18px;
     padding: 3px;
     box-shadow: none;
     height: 50px;
     max-width: 80%;
     border: none;
     border-bottom: 1px solid rgb(130, 130, 130);
+}
+.modal input:focus{
+    outline: 0;
+    border-color: rgb(0, 0, 0);
 }
 .modal-content > p{
     margin-top: 20px;
@@ -114,6 +119,10 @@ body {
 }
 .register input {
     width: 80%;
+}
+.modal #msg-signup, #msg-signin{
+    color: red;
+    font-weight: bold;
 }
 .modal-submit-btn {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -140,4 +149,8 @@ body {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+#msg-modal .modal-submit-btn{
+    margin-top: 35px;
 }
