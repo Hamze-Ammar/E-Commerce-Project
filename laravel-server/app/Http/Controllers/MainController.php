@@ -25,4 +25,14 @@ class MainController extends Controller
             "message" => "Unauthorized"
         ], 404);
     }
+
+    public function getAllCategories(){
+
+        $categories = Category::all();
+
+        return response()->json([
+            "status" => "Success",
+            "response" => $categories
+        ], 200);
+    }
 }
