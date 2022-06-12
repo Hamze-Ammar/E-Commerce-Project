@@ -28,12 +28,7 @@ login_span.onclick = function() {
     login_modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == login_modal) {
-    login_modal.style.display = "none";
-  }
-}
+
 // ======End modal section ===
 
 //Display forms on click
@@ -172,7 +167,19 @@ function fetchCategories(){
     
         }).then(function (response) {
             displayCategories(response);
-        });
+        }).catch(function (error) {
+            if (error.response) {
+              // Request made and server responded
+              alert("Please Sign In!")
+              console.log(error.response.status);
+              if(error.response.status=='401'){
+                alert("Invalid email or password");
+              }
+              console.log(error.response.headers);
+            } else if (error.request) {
+              // The request was made but no response was received
+              console.log(error.request);
+            } });
 }
 
 function displayCategories(response) {
@@ -210,30 +217,42 @@ submit_new_item.onclick = function(e){
     let item_price = document.getElementById("item_price").value;
     let item_description = document.getElementById("item_description").value;
     let item_category_id = selected_item_category;
-    if (!item_name || !item_price || !item_description || !item_category_id){
+    let profile = document.getElementById('fileToUpload');
+    if (!item_name || !item_price || !item_description || !item_category_id || profile.files.length == 0){
         msg.innerHTML = "Missing info, all fields are required";
         return
     }
+    var base64String = "";
+    const selectedFile = profile.files[0];
+    var reader = new FileReader();
 
-    let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_item';
+    reader.onload = function () {
+        base64String = reader.result.replace("data:", "")
+          .replace(/^.+,/, "");
+        console.log(base64String);
 
-    let data = new FormData();
-    data.append('name', item_name);
-    data.append('price', item_price);
-    data.append('category_id', item_category_id);
-    data.append('description', item_description);
+        let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_item';
 
-    let headers = {};
-    headers.Authorization = token;
-    axios({
-    method: "post",
-    url: my_url,
-    data: data,
-    headers: headers,
+        let data = new FormData();
+        data.append('name', item_name);
+        data.append('price', item_price);
+        data.append('category_id', item_category_id);
+        data.append('description', item_description);
+        //data.append("image", base64String);
 
-    }).then(function (response) {
-        handleResponseItems(response);
-    });
+        let headers = {};
+        headers.Authorization = token;
+        axios({
+        method: "post",
+        url: my_url,
+        data: data,
+        headers: headers,
+
+        }).then(function (response) {
+            handleResponseItems(response);
+        });
+    }
+    reader.readAsDataURL(selectedFile);
 }
 
 function handleResponseItems(response){
@@ -282,3 +301,4 @@ function handleResponseLogout(response){
         console.log(response);
     }
 }
+

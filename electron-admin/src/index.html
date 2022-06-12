@@ -13,7 +13,7 @@
     <div id="login-modal" class="modal login">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id="close-signin-btn" class="close">&times;</span>
             <h1>Sign In</h1>
             <label for="email">Email</label><br>
             <input type="text" name="email" placeholder="Enter your email*" id="email-input"> <br>
@@ -56,7 +56,10 @@
             <input id="item_price" type="number" name="price" placeholder="Enter Item Price*" required> <br>
             <label for="Description">Description</label> <br> 
             <input id="item_description" type="text" name="Description" placeholder="Enter Item Description*" required><br>
-            <label for="category">Category</label><br>
+            <label for="fileToUpload">Select image to upload:</label> <br> 
+            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+
+            <label for="category">Select Category</label><br>
             <div class="custom-select">
               <select id="select-categories" class="" name="category" id="" onChange="getSelectedCategoryId(this.options[this.selectedIndex])" required>
               </select>
