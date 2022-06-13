@@ -202,9 +202,27 @@ function getSelectedCategoryId(option) {
     selected_item_category = option.id;
 }
 
+
+let profile = document.getElementById('fileToUpload');
+var base64String = "";
+profile.addEventListener("change", function(){
+    //var selectedFile = profile.files[0];
+    var selectedFile = document.querySelector("input[type=file]")['files'][0];
+    var reader = new FileReader();
+
+    reader.onload = function () {
+        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+        //console.log(base64String);
+        imageBase64Stringsep = base64String;
+        console.log(base64String);
+    }
+    reader.readAsDataURL(selectedFile);
+
+})
+
+
 // submit new item
 let submit_new_item = document.getElementById("submit-new-item");
-
 submit_new_item.onclick = function(e){
     // Clear some html
     let msg = document.getElementById("msg-item");
@@ -217,19 +235,14 @@ submit_new_item.onclick = function(e){
     let item_price = document.getElementById("item_price").value;
     let item_description = document.getElementById("item_description").value;
     let item_category_id = selected_item_category;
-    let profile = document.getElementById('fileToUpload');
+    
     if (!item_name || !item_price || !item_description || !item_category_id || profile.files.length == 0){
         msg.innerHTML = "Missing info, all fields are required";
         return
     }
-    var base64String = "";
-    const selectedFile = profile.files[0];
-    var reader = new FileReader();
+    
 
-    reader.onload = function () {
-        base64String = reader.result.replace("data:", "")
-          .replace(/^.+,/, "");
-        //console.log(base64String);
+    
 
         let my_url = 'http://127.0.0.1:8000/api/v1/admin/add_item';
 
@@ -238,7 +251,7 @@ submit_new_item.onclick = function(e){
         data.append('price', item_price);
         data.append('category_id', item_category_id);
         data.append('description', item_description);
-        //data.append("image", base64String);
+        data.append("image", base64String);
 
         let headers = {};
         headers.Authorization = token;
@@ -251,11 +264,11 @@ submit_new_item.onclick = function(e){
         }).then(function (response) {
             handleResponseItems(response);
         });
-    }
-    reader.readAsDataURL(selectedFile);
+    
 }
 
 function handleResponseItems(response){
+    console.log(response);
     if (response.data.status!=="Success"){
         //error
         console.log(response);

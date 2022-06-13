@@ -237,10 +237,11 @@ function displayItemsOnload(){
 function handleGetItemsResponse(response){
   if (response.data.items){
     let container = document.getElementById("container");
+    container.innerHTML = "";
     response.data.items.forEach((item)=>{
       container.innerHTML += `<div class="card" id="${item.id}">
                                   <div class="card-img">
-                                      <img src="" alt="">
+                                      <img src="data:image/png;base64,${item.image}" alt="">
                                   </div>
                                   <div class="card-footer">
                                       <div class="card-footer-txt">
@@ -361,7 +362,7 @@ function handleGetItemsByIdResponse(response){
     response.data.items.forEach((item)=>{
       container.innerHTML += `<div class="card" id="${item.id}">
                                   <div class="card-img">
-                                      <img src="" alt="">
+                                    <img src="data:image/png;base64,${item.image}" alt="">
                                   </div>
                                   <div class="card-footer">
                                       <div class="card-footer-txt">
